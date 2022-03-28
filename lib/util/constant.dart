@@ -1,0 +1,1 @@
+const taskBoxName = 'task';
