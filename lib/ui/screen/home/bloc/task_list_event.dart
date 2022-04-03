@@ -12,3 +12,9 @@ class TaskListSearch extends TaskListEvent {
 }
 
 class TaskListDeleteAll extends TaskListEvent {}
+
+class TaskListDeleteItem extends TaskListEvent {
+  final Task task;
+
+  TaskListDeleteItem(this.task);
+}

@@ -35,6 +35,8 @@ class TaskListBloc extends Bloc<TaskListEvent, TaskListState> {
       } else if (event is TaskListDeleteAll) {
         await repository.deleteAll();
         emit(TaskListEmpty());
+      }else if(event is TaskListDeleteItem){
+        await repository.delete(event.task);
       }
     });
   }

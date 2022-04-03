@@ -3,6 +3,7 @@ import 'package:bolc/data/repository/repository_impl.dart';
 import 'package:bolc/ui/colors.dart';
 import 'package:bolc/ui/screen/edit/cubit/edit_task_cubit.dart';
 import 'package:bolc/ui/screen/edit/edit.dart';
+import 'package:bolc/ui/screen/home/bloc/task_list_bloc.dart';
 import 'package:bolc/ui/widget/customCheckbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,9 +53,7 @@ class _TaskItemState extends State<TaskItem> {
           child: InkWell(
             borderRadius: BorderRadius.circular(8),
             onLongPress: () {
-              final repo =
-                  Provider.of<RepositoryImpl<Task>>(context, listen: false);
-              repo.delete(widget.task);
+              context.read<TaskListBloc>().add(TaskListDeleteItem(widget.task));
             },
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
